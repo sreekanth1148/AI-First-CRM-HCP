@@ -1,0 +1,14 @@
+# Environment Variables
+backend/.env
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# VS Code
+.vscode/
