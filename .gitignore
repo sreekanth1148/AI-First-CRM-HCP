@@ -9,6 +9,10 @@ __pycache__/
 
 # Node
 node_modules/
+dist/
 
 # VS Code
 .vscode/
+
+# Database
+*.db
