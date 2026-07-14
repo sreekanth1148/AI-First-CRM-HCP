@@ -4,11 +4,12 @@ import API from "../services/api";
 function DashboardCards() {
 
   const [stats, setStats] = useState({
-    total_hcps: 0,
-    todays_visits: 0,
-    pending_followups: 0,
-    ai_suggestions: 0,
-  });
+  total_hcps: 0,
+  total_interactions: 0,
+  todays_visits: 0,
+  pending_followups: 0,
+  ai_suggestions: 0,
+});
 
   useEffect(() => {
     loadDashboard();
@@ -40,7 +41,7 @@ function DashboardCards() {
     },
 
     {
-      title: "Today's Visits",
+      title: "Recent Visits",
       value: stats.todays_visits,
       icon: "📅",
       color: "#16a34a",
@@ -54,11 +55,11 @@ function DashboardCards() {
     },
 
     {
-      title: "AI Suggestions",
-      value: stats.ai_suggestions,
-      icon: "🤖",
-      color: "#7c3aed",
-    },
+  title: "Total Interactions",
+  value: stats.total_interactions,
+  icon: "📋",
+  color: "#7c3aed",
+},
 
   ];
 
@@ -95,7 +96,15 @@ function DashboardCards() {
             {card.value}
           </h1>
 
-          <p>Updated just now</p>
+          <p
+  style={{
+    color: "#6b7280",
+    fontSize: "13px",
+    marginTop: "10px",
+  }}
+>
+  📊 Real-time Statistics
+</p>
 
         </div>
 

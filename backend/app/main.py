@@ -3,11 +3,18 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .database import Base, engine
 from .routers.interaction import router as interaction_router
+from .routers.dashboard import router as dashboard_router
 
+# Create database tables
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="AI-First CRM API")
+# FastAPI App
+app = FastAPI(
+    title="AI-First CRM API",
+    version="1.0.0"
+)
 
+# Enable CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,16 +23,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Register Routers
 app.include_router(interaction_router)
+app.include_router(dashboard_router)
 
 
+# Home API
 @app.get("/")
 def home():
     return {
-        "message": "AI-First CRM Backend Running"
+        "message": "AI-First CRM Backend Running 🚀"
     }
 
 
+# Health Check API
 @app.get("/health")
 def health():
     return {

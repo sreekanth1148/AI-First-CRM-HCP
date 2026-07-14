@@ -158,44 +158,52 @@ def delete_interaction(
         "message": "Interaction Deleted Successfully"
     }
 
-
 # =====================================
 # Dashboard Statistics
 # =====================================
 @router.get("/dashboard")
 def dashboard(db: Session = Depends(get_db)):
 
+    # Get all interactions
     interactions = db.query(models.Interaction).all()
 
-    total_hcps = len(
-        set(i.hcp_name for i in interactions)
-    )
+    # Total Unique HCPs
+    total_hcps = len(set(i.hcp_name for i in interactions))
 
+    # Total Interactions
+    total_interactions = len(interactions)
+
+    # Today's Date
     today = str(date.today())
 
+    # Today's Visits
     todays_visits = sum(
         1
         for i in interactions
         if str(i.visit_date) == today
     )
 
+    # Pending Follow-ups
     pending_followups = sum(
         1
         for i in interactions
-        if str(i.follow_up_date) >= today
+        if i.follow_up_date and str(i.follow_up_date) >= today
     )
 
-    completed_visits = len(interactions)
+    # Completed Visits
+    completed_visits = total_interactions
+
+    # AI Suggestions
+    ai_suggestions = total_interactions
 
     return {
         "total_hcps": total_hcps,
+        "total_interactions": total_interactions,
         "todays_visits": todays_visits,
         "pending_followups": pending_followups,
         "completed_visits": completed_visits,
-        "ai_suggestions": completed_visits,
+        "ai_suggestions": ai_suggestions,
     }
-
-
 # =====================================
 # AI Chat
 # =====================================

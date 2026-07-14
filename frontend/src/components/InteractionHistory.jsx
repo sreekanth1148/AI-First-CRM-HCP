@@ -161,7 +161,7 @@ function InteractionHistory() {
 
       <input
         type="text"
-        placeholder="🔍 Search Doctor / Hospital / Product"
+        placeholder="Search by Doctor, Hospital or Product..."
         value={search}
         onChange={(e)=>setSearch(e.target.value)}
         style={{

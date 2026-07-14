@@ -137,7 +137,7 @@ function InteractionForm() {
           name="product"
           value={formData.product}
           onChange={handleChange}
-          placeholder="Medicine/Product"
+          placeholder="Example: Insulin-X"
         />
 
         <label>Visit Date</label>
@@ -162,7 +162,7 @@ function InteractionForm() {
           name="notes"
           value={formData.notes}
           onChange={handleChange}
-          placeholder="Discuss the interaction..."
+          placeholder="Enter meeting notes, doctor feedback, product discussion and follow-up details..."
         />
 
         <button
@@ -175,7 +175,7 @@ function InteractionForm() {
             fontSize: "16px",
           }}
         >
-          {loading ? "Saving..." : "Save Interaction"}
+          {loading ? "Saving Interaction..." : "💾 Save Interaction"}
         </button>
 
       </form>
@@ -190,7 +190,7 @@ function InteractionForm() {
             borderRadius: "10px",
           }}
         >
-          <h3>🤖 AI Summary</h3>
+          <h3>🤖 AI Generated Summary</h3>
 
           <pre
             style={{
